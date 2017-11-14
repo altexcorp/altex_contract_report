@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report
+            id="report_hr_contract_employees"
+            string="Attestation De Travail"
+            model="hr.employee"
+            report_type="qweb-pdf"
+            file="contract_employees"
+            name="altex_contract_report.contract_employees"
+        />
+    </data>
+</openerp>

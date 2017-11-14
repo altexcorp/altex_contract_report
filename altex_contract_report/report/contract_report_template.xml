@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<template id="contract_employees">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                     <div class="page">
+                        <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo" class="center-block" style="height: 100px; width:200"/>
+
+                         <h3 style="margin-top:100px;text-transform: uppercase" align="center" >ATTESTATION DE TRAVAIL</h3>
+
+                         <style>
+                             p {
+                                text-align: justify;
+                                letter-spacing: 2px;
+                                font-size: 20px;
+                                font-family: Arial, Helvetica, sans-serif;
+                                }
+                         </style>
+
+                        <p style="margin-top:100px;margin-left:30px;margin-right:10px;line-height: 1.8">Je soussigné <t t-if="o.soussigne.gender=='male'">Mr </t> <t t-if="o.soussigne.gender=='female'">Mme </t> <span t-field="o.soussigne"/> <span t-field="o.soussigne.job_id"/> de la societer ALTEX
+                            ,certifier que <t t-if="o.gender == 'male'"> Monsieur </t> <t t-if="o.gender == 'madame'"> Madame </t> <span t-field="o.name"/> est employé au sein
+                            de notre société depuis le <span t-field="o.contract_id.date_start"/> pour une durée  <span t-field=" o.type"/>.
+                        </p>
+
+                        <p style="margin-left:30px;margin-right:10px;line-height: 1.8"><t t-if="o.gender == 'male'"> Monsieur </t> <t t-if="o.gender == 'female'"> Madame </t> <span t-field="o.name"/> exerce sont emploi entant que <span t-field="o.job_id"/> en parfait confirmité avec les disposition légales Algerienne.</p>
+
+                        <p style="margin-left:30px;line-height: 1.8">cette attestation est délivrée à la demande de l'intéressé pour servir et valoir ce que de doit.</p>
+
+                        <p style="margin-top:50px;line-height: 1.8" class="col-xs-5 pull-right">Alger, le <span t-field="o.date_signature"/></p>
+
+                        <p style="margin-top:250px"><span t-field="o.soussigne"/> <br/> <span t-field="o.soussigne.job_id"/> </p>
+                     </div>
+
+                    <div class="footer">
+                    <div class="text-center" style="border-top: 1px solid black;">
+                        <ul t-if="not res_company.custom_footer" class="list-inline">
+                            <li t-if="res_company.phone">Phone: <span t-field="res_company.phone"/></li>
+                            <li t-if="res_company.fax and res_company.phone">&amp;bull;</li>
+                            <li t-if="res_company.fax">Fax: <span t-field="res_company.fax"/></li>
+
+                            <li t-if="res_company.email">&amp;bull;</li>
+                            <li t-if="res_company.email">Email: <span t-field="res_company.email"/></li>
+
+                            <li t-if="res_company.website">&amp;bull;</li>
+                            <li t-if="res_company.website">Website: <span t-field="res_company.website"/></li>
+                        </ul>
+
+                        <t t-if="res_company.custom_footer">
+                            <span t-raw="res_company.rml_footer"/>
+                        </t>
+                    </div>
+                </div>
+                </t>
+            </t>
+    	</template>
+    </data>
+</openerp>
